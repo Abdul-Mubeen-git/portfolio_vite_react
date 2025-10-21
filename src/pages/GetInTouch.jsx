@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function GT(){
+export default function getInTouch(){
   return (
     <section className="page">
       <h1>Get in touch</h1>

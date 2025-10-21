@@ -19,7 +19,7 @@ export default function Projects(){
   return (
     <section className="page">
       <h1>Projects</h1>
-      <div className="projects-grid">
+      <div className="card-row">
         {sampleProjects.map((p, i) => (
           <article className="project-card" key={i}>
             <h3>{p.title}</h3>

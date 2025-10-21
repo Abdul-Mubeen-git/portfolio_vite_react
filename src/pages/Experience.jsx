@@ -4,7 +4,8 @@ export default function Experience(){
   return (
     <section className="page">
       <h1>Experience</h1>
-      <div className="experience-item">
+      <div className='card-row'>
+        <div className="experience-item">
         <h3>Java Back-End Developer — MThree / Walmart</h3>
         <p><strong>May 2024 – Present</strong> | Bengaluru, Karnataka</p>
         <ul>
@@ -22,6 +23,7 @@ export default function Experience(){
           <li>Developed REST APIs, optimized SQL queries (40% response time improvement).</li>
           <li>Deployed services to Azure App Services and used Blob Storage.</li>
         </ul>
+      </div>
       </div>
     </section>
   )

@@ -3,7 +3,8 @@ import Home from "./pages/Home";
 import Experience from "./pages/Experience";
 import Projects from "./pages/Projects";
 import Education from "./pages/Education";
-import Skills from "./pages/Skills";
+import GetInTouch from "./pages/GetInTouch";
+
 import logo from "./assets/fevicon.png";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
@@ -104,7 +105,7 @@ export default function App() {
       {active === "experience" && <Experience />}
       {active === "projects" && <Projects />}
       {active === "education" && <Education />}
-      {active === "get in touch" && <Skills />}
+      {active === "get in touch" && <GetInTouch />}
     </main>;
   }
 
