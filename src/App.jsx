@@ -10,33 +10,50 @@ import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const PAGES = ["home", "experience", "projects", "education", "get in touch"];
 
+const normalizePageKey = (page) => page.toLowerCase().trim();
+
+const randomColor = () => {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  const a = 0.03; // subtle stripe opacity
+  return `rgba(${r}, ${g}, ${b}, ${a})`;
+};
+
 export default function App() {
-  // Initialize active page from URL hash or default to 'home'
-  const [active, setActive] = useState(() => window.location.hash.slice(1) || "home");
+  const getInitialPage = () => {
+    const hash = decodeURIComponent(window.location.hash.slice(1) || "home");
+    return normalizePageKey(hash);
+  };
+
+  const [active, setActive] = useState(getInitialPage);
   const [menuOpen, setMenuOpen] = useState(false);
   const [transitioning, setTransitioning] = useState(false);
   const [nextPage, setNextPage] = useState(null);
+  const [stripeColor, setStripeColor] = useState(randomColor());
 
-  // Handle navigation with fade-out/in
-  function navigate(to) {
-    if (to === active) return;
-    window.location.hash = to; // update URL hash
-    setNextPage(to);
+  const navigate = (to) => {
+    const pageKey = normalizePageKey(to);
+    if (pageKey === active) return;
+    window.location.hash = to;
+    setNextPage(pageKey);
     setTransitioning(true);
     setMenuOpen(false);
-  }
+  };
 
-  // Listen for hash changes (manual URL edits / back & forward buttons)
   useEffect(() => {
     const handleHashChange = () => {
-      const page = window.location.hash.slice(1) || "home";
-      setActive(page);
+      const hash = decodeURIComponent(window.location.hash.slice(1) || "home");
+      setActive(normalizePageKey(hash));
+      setStripeColor(randomColor());
     };
+
     window.addEventListener("hashchange", handleHashChange);
+    handleHashChange();
+
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
-  // Apply fade transition
   useEffect(() => {
     if (transitioning && nextPage) {
       const t = setTimeout(() => {
@@ -49,20 +66,37 @@ export default function App() {
   }, [transitioning, nextPage]);
 
   return (
-    <div className="app-root">
+    <div
+      className="app-root"
+      style={{
+        background: `
+          repeating-linear-gradient(
+            135deg,
+            ${stripeColor} 0px,
+            ${stripeColor} 2px,
+            transparent 0px,
+            transparent 18px
+          ),
+          linear-gradient(180deg, var(--bg), ${stripeColor})
+        `,
+        transition: "background 0.5s ease"
+      }}
+    >
       {sideNav()}
       {topNav()}
       {menuIcon()}
 
-      {/* Main content */}
-      {mainContent()}
+      <main className={`page-container ${transitioning ? "fade-out" : "fade-in"}`}>
+        {active === "home" && <Home />}
+        {active === "experience" && <Experience />}
+        {active === "projects" && <Projects />}
+        {active === "education" && <Education />}
+        {active === "get in touch" && <GetInTouch />}
+      </main>
 
-      {/* Footer */}
       {footer()}
     </div>
   );
-
-  // ====================== COMPONENTS ======================
 
   function topNav() {
     return (
@@ -72,9 +106,9 @@ export default function App() {
           {PAGES.map((p) => (
             <button
               key={p}
-              className={`nav-btn ${active === p ? "active" : ""}`}
+              className={`nav-btn ${active === normalizePageKey(p) ? "active" : ""}`}
               onClick={() => navigate(p)}
-              aria-current={active === p ? "page" : undefined}
+              aria-current={active === normalizePageKey(p) ? "page" : undefined}
             >
               <span>{p[0].toUpperCase() + p.slice(1)}</span>
             </button>
@@ -86,18 +120,15 @@ export default function App() {
 
   function sideNav() {
     return (
-      <aside
-        className={`sidebar ${menuOpen ? "open" : ""}`}
-        aria-hidden={!menuOpen && window.innerWidth <= 320}
-      >
+      <aside className={`sidebar ${menuOpen ? "open" : ""}`} aria-hidden={!menuOpen && window.innerWidth <= 320}>
         <Logo />
         <nav className="nav-menu">
           {PAGES.map((p) => (
             <button
               key={p}
-              className={`nav-btn ${active === p ? "active" : ""}`}
+              className={`nav-btn ${active === normalizePageKey(p) ? "active" : ""}`}
               onClick={() => navigate(p)}
-              aria-current={active === p ? "page" : undefined}
+              aria-current={active === normalizePageKey(p) ? "page" : undefined}
             >
               <span>{p[0].toUpperCase() + p.slice(1)}</span>
             </button>
@@ -109,25 +140,9 @@ export default function App() {
 
   function menuIcon() {
     return (
-      <button
-        className="hamburger"
-        aria-label="Toggle menu"
-        onClick={() => setMenuOpen((p) => !p)}
-      >
+      <button className="hamburger" aria-label="Toggle menu" onClick={() => setMenuOpen((p) => !p)}>
         ☰
       </button>
-    );
-  }
-
-  function mainContent() {
-    return (
-      <main className={`page-container ${transitioning ? "fade-out" : "fade-in"}`}>
-        {active === "home" && <Home />}
-        {active === "experience" && <Experience />}
-        {active === "projects" && <Projects />}
-        {active === "education" && <Education />}
-        {active === "get in touch" && <GetInTouch />}
-      </main>
     );
   }
 
@@ -136,32 +151,15 @@ export default function App() {
       <footer className="footer">
         <div> &#9400; {new Date().getFullYear()} - Mubeen Abdul</div>
         <div className="socials">
-          <a href="mailto:mubeenabdul1999@gmail.com" aria-label="Email">
-            <FaEnvelope />
-          </a>
-          <a
-            href="https://github.com/Abdul-Mubeen-git"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="GitHub"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://linkedin.com/in/dev-mubeen-abdul/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin />
-          </a>
+          <a href="mailto:mubeenabdul1999@gmail.com" aria-label="Email"><FaEnvelope /></a>
+          <a href="https://github.com/Abdul-Mubeen-git" target="_blank" rel="noreferrer" aria-label="GitHub"><FaGithub /></a>
+          <a href="https://linkedin.com/in/dev-mubeen-abdul/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
         </div>
       </footer>
     );
   }
 }
 
-// ====================== LOGO ======================
 function Logo() {
   return (
     <div className="brand">
