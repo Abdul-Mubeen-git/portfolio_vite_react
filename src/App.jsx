@@ -82,6 +82,7 @@ export default function App() {
         transition: "background 0.5s ease"
       }}
     >
+      {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)} />}
       {sideNav()}
       {topNav()}
       {menuIcon()}
@@ -120,7 +121,7 @@ export default function App() {
 
   function sideNav() {
     return (
-      <aside className={`sidebar ${menuOpen ? "open" : ""}`} aria-hidden={!menuOpen && window.innerWidth <= 320}>
+      <aside className={`sidebar ${menuOpen ? "open" : ""}`}>
         <Logo />
         <nav className="nav-menu">
           {PAGES.map((p) => (
