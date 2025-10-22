@@ -73,7 +73,7 @@ html, body, #root {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 32px;
+  padding: 12px 24px;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px) saturate(180%);
   box-shadow: 0 1px 3px var(--shadow), 0 8px 24px rgba(20, 184, 166, 0.08);
@@ -86,10 +86,10 @@ html, body, #root {
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin: 0;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: var(--primary-dark);
   letter-spacing: -0.02em;
   transition: color 0.2s ease;
@@ -100,8 +100,8 @@ html, body, #root {
 }
 
 .logo {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 8px;
   transition: transform 0.3s ease;
 }
@@ -144,7 +144,7 @@ html, body, #root {
 
 .top-nav .nav-btn {
   width: auto;
-  padding: 0.9rem 1rem;
+  padding: 0.6rem 0.9rem;
 }
 
 .nav-btn::before {
@@ -255,14 +255,14 @@ html, body, #root {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 32px;
+  padding: 14px 24px;
   border-top: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
   position: relative;
   z-index: 50;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 
 .footer .socials {
@@ -274,9 +274,9 @@ html, body, #root {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -291,8 +291,8 @@ html, body, #root {
 }
 
 .footer .socials svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.1rem;
+  height: 1.1rem;
 }
 
 /* Fade animations */
