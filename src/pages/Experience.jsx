@@ -6,7 +6,7 @@ export default function Experience(){
       <h1>Experience</h1>
       <div className='card-row'>
         <div className="experience-item">
-        <h3>Java Back-End Developer — MThree / Walmart</h3>
+        <h3>Java Back-End Developer — WCC & mthree [ client - Walmart ]</h3>
         <p><strong>May 2024 – Present</strong> | Bengaluru, Karnataka</p>
         <ul>
           <li>Worked on International Marketplace: Orders & Returns, Ship with Walmart, and Label Services.</li>
