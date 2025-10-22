@@ -11,9 +11,9 @@ const typingNames = [
   'Familiar with Microservices .',
   'API Developer .',
   'Software Engineer .',
-  'a Tech Enthusiast .',
+  'A Tech Enthusiast .',
   'Familiar with Spring Boot .',
-  'a Problem Solver .'
+  'A Problem Solver .'
 ];
 
 const vibrantColors = [
