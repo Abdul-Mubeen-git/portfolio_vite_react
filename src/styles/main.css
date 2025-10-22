@@ -341,16 +341,20 @@ html, body, #root {
 }
 
 .typing-cursor-name {
+  font-style: italic;
+  font-family: cursive;
   font-weight: 200;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: blink 0.7s ease-in-out infinite;
+  animation: blink 1s ease-in-out infinite;
   display: inline-block;
   margin-left: 2px;
 }
 
 .typing-name {
+  font-style: italic;
+  font-family: cursive;
   font-weight: 500;
   display: inline-block;
   min-width: 100px;
