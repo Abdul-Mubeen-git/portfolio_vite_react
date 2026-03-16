@@ -88,7 +88,7 @@ export default function App() {
       {menuIcon()}
 
       <main className={`page-container ${transitioning ? "fade-out" : "fade-in"}`}>
-        {active === "home" && <Home />}
+        {active === "home" && <Home navigate={navigate} />}
         {active === "experience" && <Experience />}
         {active === "projects" && <Projects />}
         {active === "education" && <Education />}

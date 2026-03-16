@@ -30,7 +30,7 @@ const vibrantColors = [
   'linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%)'  
 ];
 
-export default function Home(){
+export default function Home({ navigate }) {
   const [nameIndex, setNameIndex] = useState(0);
   const [displayName, setDisplayName] = useState('');
   const [isNameDeleting, setIsNameDeleting] = useState(false);
@@ -79,9 +79,9 @@ export default function Home(){
       </h1>
 
       <div className="card-row">
-        <div className="card">
+        <div className="card current-role-card" onClick={() => navigate('experience')}>
           <h3>Current Role</h3>
-          <p>Java Back-End Developer at MThree / Walmart (May 2024 - Present)</p>
+          <p>Software Developer Engineer - Walmart contract via WCC <bold>(Jan 2024 - Nov 2025)</bold></p>
         </div>
         <div className="card">
           <h3>Contact</h3>
