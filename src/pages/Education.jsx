@@ -12,13 +12,13 @@ const education = [
   {
     className: "edu-item s-curve-top",
     title: "B.Tech — Computer Science & Engineering",
-    details: "Rajiv Gandhi University of Knowledge and Technologies (RGUKT) — CGPA: 7.7 / 10.0<br/>July 2018 – Sept 2022",
+    details: "Rajiv Gandhi University of Knowledge and Technologies (RGUKT) — CGPA: 7.7 / 10.0 July 2018 – Sept 2022",
     date: "2018 - 2022"
   },
   {
     className: "edu-item s-curve-middle",
     title: "Pre-University Course (PUC)",
-    details: "RGUKT — CGPA: 6.8 / 10.0<br/>Sept 2016 – Apr 2018",
+    details: "RGUKT — CGPA: 6.8 / 10.0 Sept 2016 – Apr 2018",
     date: "2016 - 2018"
   },
   {
