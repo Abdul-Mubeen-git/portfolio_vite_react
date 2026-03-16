@@ -3,12 +3,13 @@ import Home from "./pages/Home";
 import Experience from "./pages/Experience";
 import Projects from "./pages/Projects";
 import Education from "./pages/Education";
+import Resume from "./pages/Resume";
 import GetInTouch from "./pages/GetInTouch";
 
 import logo from "./assets/fevicon.png";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
-const PAGES = ["home", "experience", "projects", "education", "get in touch"];
+const PAGES = ["home", "experience", "projects", "education", "resume", "get in touch"];
 
 const normalizePageKey = (page) => page.toLowerCase().trim();
 
@@ -92,6 +93,7 @@ export default function App() {
         {active === "experience" && <Experience />}
         {active === "projects" && <Projects />}
         {active === "education" && <Education />}
+        {active === "resume" && <Resume />}
         {active === "get in touch" && <GetInTouch />}
       </main>
 
